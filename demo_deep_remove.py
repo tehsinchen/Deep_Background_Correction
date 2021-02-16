@@ -2,16 +2,13 @@ import tensorflow as tf
 import tifffile
 import numpy as np
 from pycromanager import Bridge
-from pipython import GCSDevice
 from matplotlib import pyplot as plt
 
 
 def deep_remove():
     model_path = r'C:\Users\PC1\Desktop\python_GUI\model\unet_background.hdf5'
     model = tf.keras.models.load_model(model_path)
-    with GCSDevice() as e518:
-        e518.ConnectUSB(serialnum='117022217')
-        e518.ONL(list(range(1, 4)), [False] * 3)
+    
     bridge = Bridge()
     core = bridge.get_core()
     try:
